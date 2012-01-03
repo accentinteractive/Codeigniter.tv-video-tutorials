@@ -45,4 +45,43 @@ class Blog extends CI_Controller {
         
         dump($posts);
     }
+    
+    /**
+     * Add a new record to the posts table
+     * 
+     * @return void
+     * @author Joost van Veen
+     */
+    public function add() {
+        
+        $data = array(
+            'post_title' => 'This is my fourth post',
+            'post_body' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
+            'post_pubdate' => '2012-01-02 00:00:00',
+            'post_author' => 'Joost van Veen',
+            'post_slug' => 'fourth-post');
+        
+         $id = $this->posts->save($data);
+         dump('A new record with an id of ' . $id . ' was saved.');
+    }
+    
+    /**
+     * Update a record in the posts table
+     * 
+     * @return void
+     * @author Joost van Veen
+     */
+    public function update() {
+        
+        $data = array(
+            'post_title' => 'This is my fifth post',
+            'post_body' => 'Suspendisse eleifend sollicitudin consectetur.',
+            'post_pubdate' => '2012-01-03 00:00:00',
+            'post_author' => 'Some other author',
+            'post_slug' => 'fifth-post');
+        
+         $id = $this->posts->save($data, 6);
+         dump('A record with an id of ' . $id . ' was updated.');
+    }
+
 }

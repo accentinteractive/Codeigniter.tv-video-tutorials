@@ -183,4 +183,31 @@ class MY_Model extends CI_Model {
 
         return $data;
     }
+    
+    /**
+     * Save or update a record.
+     * 
+     * @param array $data
+     * @param mixed $id Optional
+     * @return mixed The ID of the saved record
+     * @author Joost van Veen
+     */
+    public function save($data, $id = FALSE) {
+        
+        if ($id == FALSE) {
+            
+            // This is an insert
+            $this->db->set($data)->insert($this->table_name);
+        }
+        else {
+            
+            // This is an update
+            $filter = $this->primaryFilter;
+            $this->db->set($data)->where($this->primary_key, $filter($id))->update($this->table_name);
+        }
+        
+        // Return the ID
+        return $id == FALSE ? $this->db->insert_id() : $id;
+    }
+
 }
