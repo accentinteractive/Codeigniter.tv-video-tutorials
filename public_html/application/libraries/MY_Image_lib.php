@@ -27,7 +27,7 @@ class MY_Image_lib extends CI_Image_lib
         isset($config['maintain_ratio']) || $config['maintain_ratio'] = TRUE;
         
         // If we should change the aspect ratio, we will do that first
-        if ($config['maintain_ratio'] == FALSE) {
+        do if ($config['maintain_ratio'] == FALSE) {
             // Fetch the size of the source image
             $source_image_data = getimagesize($config['source_image']);
             $source_image_data['width'] = $source_image_data[0];
@@ -44,7 +44,7 @@ class MY_Image_lib extends CI_Image_lib
             // destination image aspect ratio
             if ($new_ratio == $source_ratio) {
                 // Image is already the proper ratio, no need to crop
-                return FALSE;
+                break;
             }
             elseif ($new_ratio > $source_ratio || ($new_ratio == 1 && $source_ratio < 1)) {
                 // Destination ratio image is either more 'landscape shaped' than
@@ -65,7 +65,7 @@ class MY_Image_lib extends CI_Image_lib
             $this->crop();
             $this->clear();
             $config['source_image'] = $conf['new_image'];
-        }
+        } while (false);
         
         // Resize the image
         $conf = array('source_image' => $config['source_image'], 'new_image' => $config['new_image'], 'maintain_ratio' => TRUE, 'width' => $config['width'], 'height' => $config['height']);
