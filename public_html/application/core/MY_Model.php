@@ -209,5 +209,39 @@ class MY_Model extends CI_Model {
         // Return the ID
         return $id == FALSE ? $this->db->insert_id() : $id;
     }
+    
+    /**
+     * Delete one or more records by ID
+     * @param mixed $ids
+     * @return void
+     * @author Joost van Veen
+     */
+    public function delete($ids){
+        
+        $filter = $this->primaryFilter; 
+        $ids = ! is_array($ids) ? array($ids) : $ids;
+        
+        foreach ($ids as $id) {
+            $id = $filter($id);
+            if ($id) {
+                $this->db->where($this->primary_key, $id)->limit(1)->delete($this->table_name);
+            }
+        }
+    }
 
+    /**
+     * Delete one or more records by another key than the ID
+     * @param string $key
+     * @param mixed $value
+     * @return void
+     * @author Joost van Veen
+     */
+    public function delete_by($key, $value){
+        
+        if (empty($key)) {
+            return FALSE;
+        }
+        
+        $this->db->where(htmlentities($key), htmlentities($value))->delete($this->table_name);
+    }
 }

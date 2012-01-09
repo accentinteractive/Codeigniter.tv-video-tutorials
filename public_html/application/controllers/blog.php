@@ -83,5 +83,10 @@ class Blog extends CI_Controller {
          $id = $this->posts->save($data, 6);
          dump('A record with an id of ' . $id . ' was updated.');
     }
+    
+    public function delete() {
+        $id = array(2,5);
+        $this->posts->delete($id);
+    }
 
 }
