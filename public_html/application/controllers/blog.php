@@ -83,10 +83,16 @@ class Blog extends CI_Controller {
          $id = $this->posts->save($data, 6);
          dump('A record with an id of ' . $id . ' was updated.');
     }
-    
-    public function delete() {
-        $id = array(2,5);
-        $this->posts->delete($id);
-    }
 
+    /**
+     * Delete posts
+     * @return void
+     * @author Joost van Veen
+     */
+    public function delete() {
+        
+        // $this->posts->delete(1); // Delete post #1
+        // $this->posts->delete(array(2,3)); // Delete posts #2 and #3
+        $this->posts->delete_by('post_author', 'Joost van Veen'); // Delete all posts for author 'Joost van Veen'
+    }
 }

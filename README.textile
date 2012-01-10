@@ -1,3 +1,18 @@
+h1. MY_Model series
+
+This is the source code for the MY_Model series. It contains:
+* Blog controller
+* MY_Model containing all CRUD methods
+* Posts model that extends MY_Model and does not need to contain any methods at all.
+
+Using a MY_Model can be a huge time saver, and it helps keeping your code lean, mean and DRY (Don't Repeat Yourself). If you ever need to tweak an insert method, you only need to tweak it in MY_Model and you're done.
+
+So: 
+* Reduce overhead in your apps.
+* Increase maintainability and scalability.
+* Reduce time redundant coding.
+* Increase time efficient coding (or drinking beer).
+
 h1. Codeigniter.tv source code
 
 We keep the source code for our Codeigniter.tv video tutorials in this public repository. Each video tutorial has its own branch. 
