@@ -1,3 +1,9 @@
+h1. Layouts and partial
+
+Layouts and partial view help you effiently organise your view code. You can write cleaner code with less repetitions, which makes your webapps better scalable. And the good news is: you can create layouts and partials using the default features from Codeigniter itself.
+
+View the video tutorial at http://codeigniter.tv
+
 h1. Codeigniter.tv source code
 
 We keep the source code for our Codeigniter.tv video tutorials in this public repository. Each video tutorial has its own branch. 
